@@ -1,0 +1,326 @@
+// Responsive Mixins
+@mixin responsive-font(
+  $desktop-size,
+  $desktop-line,
+  $mobile-size,
+  $mobile-line
+) {
+  font-size: $desktop-size;
+  line-height: $desktop-line;
+
+  @media (max-width: 768px) {
+    font-size: $mobile-size;
+    line-height: $mobile-line;
+  }
+}
+
+@mixin respond($breakpoint) {
+  @if $breakpoint == sm {
+    @media (max-width: 640px) {
+      @content;
+    }
+  } @else if $breakpoint == md {
+    @media (max-width: 768px) {
+      @content;
+    }
+  } @else if $breakpoint == lg {
+    @media (max-width: 1024px) {
+      @content;
+    }
+  } @else if $breakpoint == xl {
+    @media (max-width: 1280px) {
+      @content;
+    }
+  }
+}
+
+// Responsive Section Wrapper Mixin
+@mixin section-wrapper(
+  $max-width: 1400px,
+  $padding-inline-d: 20px,
+  $padding-inline-m: 10px,
+  $padding-block-d: 100px,
+  $padding-block-m: 10px
+) {
+  max-width: $max-width;
+  margin: 0 auto;
+  padding-inline: $padding-inline-d;
+  padding-block: $padding-block-d;
+  // width: 90%;
+
+  @media (max-width: 768px) {
+    padding-inline: $padding-inline-m;
+    padding-block: $padding-block-m;
+  }
+}
+
+// Typography
+.h1 {
+  font-family: $font-heading;
+  font-weight: 700;
+  @include responsive-font(48px, 56px, 32px, 40px);
+}
+
+.h2 {
+  font-family: $font-heading;
+  font-weight: 400; // Semi-Bold
+  @include responsive-font(40px, 48px, 24px, 32px);
+}
+
+.h3 {
+  font-family: $font-heading;
+  font-weight: 600; // Medium
+  @include responsive-font(24px, 32px, 20px, 28px);
+}
+
+p,
+span {
+  font-family: "Archivo", "sans-serif" !important;
+}
+
+.b-heading {
+  font-family: $font-heading;
+  font-weight: 700;
+  font-size: 70px;
+  line-height: 65px;
+
+  @include respond(xl) {
+    font-size: 56px;
+  }
+
+  @include respond(lg) {
+    font-size: 48px;
+  }
+
+  @include respond(md) {
+    font-size: 40px;
+    line-height: 56px;
+  }
+
+  @include respond(sm) {
+    font-size: 32px;
+    line-height: 40px;
+  }
+}
+
+.m-heading {
+  font-family: $font-heading;
+  font-weight: 700;
+  font-size: 64px;
+  line-height: 56px;
+
+  @include respond(xl) {
+    font-size: 52px;
+  }
+
+  @include respond(lg) {
+    font-size: 44px;
+  }
+
+  @include respond(md) {
+    font-size: 38px;
+  }
+
+  @include respond(sm) {
+    font-size: 28px;
+  }
+}
+
+.s-heading {
+  font-family: $font-heading;
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 48px;
+  @include respond(lg) {
+    font-size: 36px;
+  }
+
+  @include respond(md) {
+    font-size: 32px;
+  }
+
+  @include respond(sm) {
+    font-size: 28px;
+  }
+}
+/* Global Utility for Footer Links */
+.footer-link {
+  color: #a6e1ff;
+  &:hover {
+    color: #69b3d7;
+    transition: color 0.3s ease;
+  }
+}
+
+// @include responsive-font(40px, 56px, 32px, 40px);;
+.body-text {
+  font-family: $font-body;
+  font-weight: 400;
+  @include responsive-font(16px, 24px, 14px, 22px);
+}
+
+.small-text {
+  font-family: $font-body;
+  font-weight: 400;
+  @include responsive-font(12px, 16px, 10px, 14px);
+}
+
+.font-satoshi {
+  font-family: $font-satoshi;
+}
+
+.archivo-expanded {
+  font-family: "Archivo Expanded" !important;
+}
+.archivo {
+  font-family: "Archivo" !important;
+}
+.cus-shadow {
+  box-shadow: rgba(149, 157, 165, 0.112) 0px 8px 24px;
+}
+
+// Background Colors
+.bg-midnight {
+  background-color: get-color(primary, midnight-express);
+}
+.bg-harvest {
+  background-color: get-color(primary, harvest-gold);
+}
+.bg-offwhite {
+  background-color: get-color(primary, off-white);
+}
+.bg-catalina {
+  background-color: get-color(secondary, catalina-blue);
+}
+.bg-gold {
+  background-color: get-color(secondary, gold-drop);
+}
+.bg-stromboli {
+  background-color: get-color(secondary, stromboli);
+}
+.bg-lightblue {
+  background-color: get-color(secondary, light-blue);
+}
+.bg-brass {
+  background-color: get-color(secondary, brass);
+}
+.bg-light {
+  background-color: get-color(neutral, light);
+}
+.bg-light-medium {
+  background-color: get-color(neutral, light-medium);
+}
+.bg-medium {
+  background-color: get-color(neutral, medium);
+}
+.bg-medium-dark {
+  background-color: get-color(neutral, medium-dark);
+}
+.bg-dark {
+  background-color: get-color(neutral, dark);
+}
+
+// Text Colors
+.text-midnight {
+  color: get-color(primary, midnight-express);
+}
+.text-harvest {
+  color: get-color(primary, harvest-gold);
+}
+.text-offwhite {
+  color: get-color(primary, off-white);
+}
+.text-catalina {
+  color: get-color(secondary, catalina-blue);
+}
+.text-gold {
+  color: get-color(secondary, gold-drop);
+}
+.text-stromboli {
+  color: get-color(secondary, stromboli);
+}
+.text-lightblue {
+  color: get-color(secondary, light-blue);
+}
+.text-brass {
+  color: get-color(secondary, brass);
+}
+.text-light {
+  color: get-color(neutral, light);
+}
+.text-light-medium {
+  color: get-color(neutral, light-medium);
+}
+.text-medium {
+  color: get-color(neutral, medium);
+}
+.text-medium-dark {
+  color: get-color(neutral, medium-dark);
+}
+.text-dark {
+  color: get-color(neutral, dark);
+}
+
+/////////////////// Outline Text for Different Colors//////////////////////////
+.text-outline-harvest {
+  -webkit-text-stroke: 1px #f7be68; // Outline uses the original text color
+  color: transparent; // Makes the fill transparent but keeps the outline
+}
+.text-outline-harvest-fallback {
+  text-shadow: 0 0 0 transparent;
+}
+
+.text-outline-white {
+  -webkit-text-stroke: 1px #ffffff; // Outline uses the original text color
+  color: transparent; // Makes the fill transparent but keeps the outline
+}
+.text-outline-white-2 {
+  -webkit-text-stroke: 1px #ffffff; // Outline uses the original text color
+  color: transparent; // Makes the fill transparent but keeps the outline
+}
+.text-outline-white-fallback {
+  text-shadow: 0 0 0 transparent;
+}
+
+.text-outline-brass {
+  -webkit-text-stroke: 1px #a8a53d; // Outline uses the original text color
+  color: transparent; // Makes the fill transparent but keeps the outline
+}
+
+.text-outline-catalina {
+  -webkit-text-stroke: 1px #345f72; // Outline uses the original text color
+  color: transparent; // Makes the fill transparent but keeps the outline
+}
+.text-outline-catina-blue {
+  -webkit-text-stroke: 1px #345f72; // Outline uses the original text color
+  color: transparent; // Makes the fill transparent but keeps the outline
+}
+.text-outline-midnight-express {
+  -webkit-text-stroke: 1px #0f182c; // Outline uses the original text color
+  color: transparent; // Makes the fill transparent but keeps the outline
+}
+.text-outline-fallback {
+  text-shadow: 0 0 0 transparent;
+}
+///////////////////////
+// $max-width: 1200px,
+// $padding-imline-d: 20px,
+// $padding-inline-m: 10px,
+// $padding-block-d: 10px,
+// $padding-block-m: 10px,
+.section-wrapper {
+  max-width: 1400px;
+  width: 90%;
+  padding: 70px 0px;
+  margin: 0 auto;
+  @include respond(md) {
+    padding: 35px 0px;
+  }
+}
+
+.course-card-shadow {
+  box-shadow: 0px 14.35px 28.7px -14.35px #00000033;
+}
+.solution-shadow {
+  box-shadow: 0px 5.67px 11.33px -5.67px #00000033;
+}

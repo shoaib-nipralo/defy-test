@@ -1,0 +1,30 @@
+.navbar {
+  position: fixed;
+  top: 0; /* Start in the original position */
+  z-index: 999;
+}
+.navbar.hide {
+  animation: slideUpp 0.3s ease-in-out forwards; /* Ensure 'forwards' to keep final state */
+}
+
+.navbar.show {
+  animation: slideDownn 0.3s ease-in-out forwards; /* Ensure 'forwards' to keep final state */
+}
+
+@keyframes slideDownn {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideUpp {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-100%);
+  }
+}

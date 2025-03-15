@@ -1,0 +1,31 @@
+// Font Variables
+$font-heading: "Archivo Expanded", sans-serif;
+$font-body: "Archivo", sans-serif;
+$font-satoshi: "Satoshi", sans-serif;
+
+// Colors Map
+$colors: (
+  primary: (
+    midnight-express: #0f182c,
+    harvest-gold: #f7be68,
+    off-white: #f2f2f7,
+  ),
+  secondary: (
+    catalina-blue: #223851,
+    gold-drop: #d16928,
+    stromboli: #48655d,
+    light-blue: #a7d9e9,
+    brass: #a8a53d,
+  ),
+  neutral: (
+    light: #f4f4f4,
+    light-medium: #d8d8d8,
+    medium: #969696,
+    medium-dark: #646464,
+    dark: #323232,
+  ),
+);
+
+@function get-color($category, $name) {
+  @return map-get(map-get($colors, $category), $name);
+}
